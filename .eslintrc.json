@@ -1,0 +1,105 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "plugins": [
+    "import-newlines"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "./eslint-configs/typescript",
+        "./eslint-configs/typescript-codestyle"
+      ],
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "app",
+            "style": "kebab-case"
+          }
+        ],
+        "array-bracket-newline": [
+          "error",
+          "consistent"
+        ],
+        "object-curly-newline": [
+          "error",
+          {
+            "ObjectExpression": {
+              "multiline": true,
+              "consistent": true
+            },
+            "ObjectPattern": {
+              "multiline": true,
+              "consistent": true
+            }
+          }
+        ],
+        "object-property-newline": [
+          "error",
+          {
+            "allowAllPropertiesOnSameLine": true
+          }
+        ],
+        "newline-per-chained-call": [
+          "error",
+          {
+            "ignoreChainWithDepth": 2
+          }
+        ]
+      }
+    },
+    {
+      "files": [
+        "src/**/*.spec.ts",
+        "src/**/*.d.ts"
+      ],
+      "parserOptions": {
+        "project": "tsconfig.spec.json"
+      },
+      "extends": [
+        "plugin:jasmine/recommended"
+      ],
+      "plugins": [
+        "jasmine"
+      ],
+      "env": {
+        "jasmine": true
+      },
+      "rules": {
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "./eslint-configs/templates"
+      ],
+      "rules": {
+        "@angular-eslint/template/cyclomatic-complexity": "off",
+        "@angular-eslint/template/conditional-complexity": "off"
+      }
+    }
+  ]
+}
