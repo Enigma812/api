@@ -1,5 +1,7 @@
 <section>
   <h1>Api</h1>
-  <div *ngIf="cats$ | async as cats">{{ cats }}</div>
-  <button (click)="getCat()">Получить кошку</button>
+  <div *ngIf="catImage$ | async as image">
+    <img src="image" />
+  </div>
+  <button (click)="postCat()">Получить кошку</button>
 </section>
